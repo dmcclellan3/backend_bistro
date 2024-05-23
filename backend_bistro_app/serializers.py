@@ -7,6 +7,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class MenuItemSerializer(serializers.ModelSerializer):
+    category_name = serializers.ReadOnlyField(source='category.name')
     class Meta:
         model = MenuItem
-        fields = ['id', 'description', 'name', 'category', 'price']
+        fields = ['id', 'description', 'name', 'category', 'price', 'category_name']
